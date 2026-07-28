@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
     <!-- FontAwesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Kayma efekti için özel stil */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -17,31 +16,42 @@
         .animate-marquee {
             display: flex;
             width: max-content;
-            animation: marquee 30s linear infinite;
+            animation: marquee 40s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
 
-<!-- 🗂️ NAV BAR (MENÜ) -->
+    <!-- 🗂️ NAV BAR (MENÜ) -->
     <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Menü çubuğu yüksekliği logonun rahat sığması için h-24 yapıldı -->
-            <div class="flex items-center justify-between h-24">
-                <!-- Sol Alan: Sadece Logo (Büyük, Net ve Tam Ortalanmış) -->
-                <div class="flex items-center">
-                    <!-- Yükseklik h-16 yapılarak logo maksimum belirginliğe getirildi -->
+            <div class="flex items-center justify-between h-24 relative">
+                
+                <!-- Sol Alan: Logo -->
+                <div class="flex items-center z-20">
                     <img src="otobotxlogo.png" alt="OtoBotX Logo" class="h-16 w-auto object-contain">
                 </div>
-                <!-- Orta Alan: Menü Linkleri -->
-                <div class="hidden md:block space-x-8 text-sm font-medium text-slate-300">
+                
+                <!-- Mobil Menü Tetikleyici (Checkbox Hack) -->
+                <input type="checkbox" id="menu-toggle" class="peer hidden" />
+                <label for="menu-toggle" class="md:hidden z-20 p-2 text-slate-400 hover:text-white cursor-pointer select-none">
+                    <i class="fas fa-bars text-2xl peer-checked:hidden"></i>
+                </label>
+
+                <!-- Orta Alan: Menü Linkleri (Mobil & Masaüstü Uyumlu) -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300 
+                            peer-checked:flex peer-checked:flex-col peer-checked:absolute peer-checked:top-24 peer-checked:left-0 peer-checked:w-full peer-checked:bg-slate-950 peer-checked:p-6 peer-checked:border-b peer-checked:border-slate-800 peer-checked:space-x-0 peer-checked:space-y-4 transition-all">
                     <a href="#hizmetler" class="hover:text-cyan-400 transition">Hizmetlerimiz</a>
                     <a href="#multimedya" class="hover:text-cyan-400 transition">Multimedya Dönüşüm</a>
                     <a href="#chiptuning" class="hover:text-cyan-400 transition">Chip Tuning</a>
                     <a href="#kurumsal" class="hover:text-cyan-400 transition">Galeri İş Birliği</a>
                 </div>
+                
                 <!-- Sağ Alan: WhatsApp Butonu -->
-                <div>
+                <div class="hidden sm:block z-20">
                     <a href="https://wa.me/905428751210" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm shadow-lg shadow-emerald-500/20 transition duration-300 transform hover:-translate-y-0.5 whitespace-nowrap">
                         <i class="fab fa-whatsapp text-lg"></i> WhatsApp Fiyat Al
                     </a>
@@ -57,28 +67,28 @@
             <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 mb-6 border border-cyan-500/20">
                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Yeni Nesil Oto Yazılım Merkezi
             </span>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
                 Aracınızın Gizli Potansiyelini <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">Serbest Bırakın!</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-10">
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 mb-10 px-4">
                 OtoBotX ile profesyonel diagnostik, ileri seviye gizli özellik aktivasyonu, ithal araç dil dönüşümleri ve performans yazılımları tek çatıda.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#hizmetler" class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl shadow-cyan-500/20 transition">Hizmetleri İnceleyin</a>
-                <a href="https://wa.me/905428751210" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 transition">Hemen Randevu Al</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                <a href="#hizmetler" class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl shadow-cyan-500/20 transition text-center">Hizmetleri İnceleyin</a>
+                <a href="https://wa.me/905428751210" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 transition text-center">Hemen Randevu Al</a>
             </div>
         </div>
     </header>
 
     <!-- 🚗 MARKALAR (KAYAN BANT) -->
-    <section class="py-8 bg-slate-950 overflow-hidden border-b border-slate-900">
-        <div class="relative w-full overflow-hidden whitespace-nowrap">
-            <div class="animate-marquee text-slate-500 text-sm font-semibold tracking-widest uppercase">
+    <section class="py-8 bg-slate-950 overflow-hidden border-b border-slate-900 select-none">
+        <div class="relative w-full overflow-hidden whitespace-nowrap mask-gradient">
+            <div class="animate-marquee text-slate-500 text-xs sm:text-sm font-semibold tracking-widest uppercase gap-x-12">
                 <!-- 1. Tur -->
-                <span class="mx-8">Alfa Romeo</span> <span class="mx-8">Aston Martin</span> <span class="mx-8">Audi</span> <span class="mx-8">BMW</span> <span class="mx-8">BYD</span> <span class="mx-8">Chery</span> <span class="mx-8">Chevrolet</span> <span class="mx-8">Citroen</span> <span class="mx-8">Cupra</span> <span class="mx-8">Dacia</span> <span class="mx-8">DS</span> <span class="mx-8">Ferrari</span> <span class="mx-8">Fiat</span> <span class="mx-8">Ford</span> <span class="mx-8">Honda</span> <span class="mx-8">Hyundai</span> <span class="mx-8">Jaguar</span> <span class="mx-8">Jeep</span> <span class="mx-8">Kia</span> <span class="mx-8">Land Rover</span> <span class="mx-8">Lexus</span> <span class="mx-8">Maserati</span> <span class="mx-8">Mazda</span> <span class="mx-8">Mercedes-Benz</span> <span class="mx-8">MG</span> <span class="mx-8">Mini</span> <span class="mx-8">Mitsubishi</span> <span class="mx-8">Nissan</span> <span class="mx-8">Opel</span> <span class="mx-8">Peugeot</span> <span class="mx-8">Porsche</span> <span class="mx-8">Renault</span> <span class="mx-8">Seat</span> <span class="mx-8">Skoda</span> <span class="mx-8">Tesla</span> <span class="mx-8">Togg</span> <span class="mx-8">Toyota</span> <span class="mx-8">Volkswagen</span> <span class="mx-8">Volvo</span>
-                <!-- 2. Tur (Sonsuz döngü hissi için tekrar) -->
-                <span class="mx-8">Alfa Romeo</span> <span class="mx-8">Aston Martin</span> <span class="mx-8">Audi</span> <span class="mx-8">BMW</span> <span class="mx-8">BYD</span> <span class="mx-8">Chery</span> <span class="mx-8">Chevrolet</span> <span class="mx-8">Citroen</span> <span class="mx-8">Cupra</span> <span class="mx-8">Dacia</span> <span class="mx-8">DS</span> <span class="mx-8">Ferrari</span> <span class="mx-8">Fiat</span> <span class="mx-8">Ford</span> <span class="mx-8">Honda</span> <span class="mx-8">Hyundai</span> <span class="mx-8">Jaguar</span> <span class="mx-8">Jeep</span> <span class="mx-8">Kia</span> <span class="mx-8">Land Rover</span> <span class="mx-8">Lexus</span> <span class="mx-8">Maserati</span> <span class="mx-8">Mazda</span> <span class="mx-8">Mercedes-Benz</span> <span class="mx-8">MG</span> <span class="mx-8">Mini</span> <span class="mx-8">Mitsubishi</span> <span class="mx-8">Nissan</span> <span class="mx-8">Opel</span> <span class="mx-8">Peugeot</span> <span class="mx-8">Porsche</span> <span class="mx-8">Renault</span> <span class="mx-8">Seat</span> <span class="mx-8">Skoda</span> <span class="mx-8">Tesla</span> <span class="mx-8">Togg</span> <span class="mx-8">Toyota</span> <span class="mx-8">Volkswagen</span> <span class="mx-8">Volvo</span>
+                <span>Alfa Romeo</span> <span>Aston Martin</span> <span>Audi</span> <span>BMW</span> <span>BYD</span> <span>Chery</span> <span>Chevrolet</span> <span>Citroen</span> <span>Cupra</span> <span>Dacia</span> <span>DS</span> <span>Ferrari</span> <span>Fiat</span> <span>Ford</span> <span>Honda</span> <span>Hyundai</span> <span>Jaguar</span> <span>Jeep</span> <span>Kia</span> <span>Land Rover</span> <span>Lexus</span> <span>Maserati</span> <span>Mazda</span> <span>Mercedes-Benz</span> <span>MG</span> <span>Mini</span> <span>Mitsubishi</span> <span>Nissan</span> <span>Opel</span> <span>Peugeot</span> <span>Porsche</span> <span>Renault</span> <span>Seat</span> <span>Skoda</span> <span>Tesla</span> <span>Togg</span> <span>Toyota</span> <span>Volkswagen</span> <span>Volvo</span>
+                <!-- 2. Tur -->
+                <span>Alfa Romeo</span> <span>Aston Martin</span> <span>Audi</span> <span>BMW</span> <span>BYD</span> <span>Chery</span> <span>Chevrolet</span> <span>Citroen</span> <span>Cupra</span> <span>Dacia</span> <span>DS</span> <span>Ferrari</span> <span>Fiat</span> <span>Ford</span> <span>Honda</span> <span>Hyundai</span> <span>Jaguar</span> <span>Jeep</span> <span>Kia</span> <span>Land Rover</span> <span>Lexus</span> <span>Maserati</span> <span>Mazda</span> <span>Mercedes-Benz</span> <span>MG</span> <span>Mini</span> <span>Mitsubishi</span> <span>Nissan</span> <span>Opel</span> <span>Peugeot</span> <span>Porsche</span> <span>Renault</span> <span>Seat</span> <span>Skoda</span> <span>Tesla</span> <span>Togg</span> <span>Toyota</span> <span>Volkswagen</span> <span>Volvo</span>
             </div>
         </div>
     </section>
@@ -87,33 +97,33 @@
     <section id="hizmetler" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-white">Profesyonel Hizmet Alanlarımız</h2>
-            <p class="text-slate-400 mt-2">Aracınızın ihtiyacı olan tüm yazılımsal çözümler gelişmiş cihazlarımızla uygulanır.</p>
+            <p class="text-slate-400 mt-2 text-sm sm:text-base">Aracınızın ihtiyacı olan tüm yazılımsal çözümler gelişmiş cihazlarımızla uygulanır.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Kart 1 -->
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mb-6">
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mb-6 group-hover:scale-110 transition">
                     <i class="fas fa-laptop-code"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-3">İleri Diagnostik & Kodlama</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">Genel arıza tespiti (DTC kod silme), canlı veri takibi, parça tanıtma, online kodlama ve servis sıfırlama işlemleri.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Genel arıza tespiti (DTC kod silme), canlı veri takibi, parça tanıtma, online kodlama ve servis sıfırlama işlemleri.</p>
             </div>
             <!-- Kart 2 -->
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl mb-6">
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl mb-6 group-hover:scale-110 transition">
                     <i class="fas fa-sliders"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-3">Gizli Özellik Aktivasyonu</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">BMW, Mercedes ve VAG Grubu (Audi, VW, Seat, Skoda) araçların fabrikada kapatılmış konfor ve görsel özelliklerini açıyoruz.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">BMW, Mercedes ve VAG Grubu (Audi, VW, Seat, Skoda) araçların fabrikada kapatılmış konfor ve görsel özelliklerini açıyoruz.</p>
             </div>
             <!-- Kart 3 -->
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl mb-6">
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl mb-6 group-hover:scale-110 transition">
                     <i class="fas fa-gauge-high"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-3">AmpPerformance Çözümleri</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">Stage 1 & Stage 2 ECU/TCU yazılımları ile maksimum güç ve yakıt tasarrufu. Kronik AdBlue, DPF ve EGR sorunlarına kesin çözümler.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Stage 1 & Stage 2 ECU/TCU yazılımları ile maksimum güç ve yakıt tasarrufu. Kronik AdBlue, DPF ve EGR sorunlarına kesin çözümler.</p>
             </div>
         </div>
     </section>
@@ -121,9 +131,9 @@
     <!-- 🌍 MULTİMEDYA & DİL DÖNÜŞÜMÜ -->
     <section id="multimedya" class="py-20 bg-slate-900/30 border-t border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:text-center mb-16">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-white tracking-tight">İthal Araç Multimedya & Dil Dönüşümü</h2>
-                <p class="mt-4 max-w-2xl text-xl text-slate-400 lg:mx-auto">Japonya veya yurt dışından ithal edilen araçların sistemlerini tamamen yerelleştiriyor, kablosuz Apple CarPlay ve Android Auto konforunu ekliyoruz.</p>
+                <p class="mt-4 max-w-2xl text-base sm:text-xl text-slate-400 mx-auto">Japonya veya yurt dışından ithal edilen araçların sistemlerini tamamen yerelleştiriyor, kablosuz Apple CarPlay ve Android Auto konforunu ekliyoruz.</p>
             </div>
 
             <div class="space-y-12">
@@ -180,11 +190,11 @@
         <div class="text-center mb-16">
             <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 block mb-2">PERFORMANS & OPTİMİZASYON</span>
             <h2 class="text-3xl font-bold text-white tracking-tight">AmpPerformance Motor & Şanzıman Yazılımları</h2>
-            <p class="mt-4 max-w-2xl text-slate-400 mx-auto">Aracınızın mekanik sınırlarını zorlamadan, fabrikasyon kısıtlamaları kaldırıyor; güvenli güç artışı ve yakıt tasarrufu sağlıyoruz.</p>
+            <p class="mt-4 max-w-2xl text-slate-400 mx-auto text-sm sm:text-base">Aracınızın mekanik sınırlarını zorlamadan, fabrikasyon kısıtlamaları kaldırıyor; güvenli güç artışı ve yakıt tasarrufu sağlıyoruz.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Sol Sütun: Performans Yazılımları -->
+            <!-- Sol Sütun -->
             <div class="bg-gradient-to-b from-slate-900/80 to-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-indigo-500/30 transition duration-300">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl">
@@ -195,28 +205,17 @@
                         <p class="text-xs text-slate-500">Stage 1 & Stage 2 Optimizasyonları</p>
                     </div>
                 </div>
-                
                 <p class="text-slate-400 text-sm leading-relaxed mb-6">
                     Aracınızın motor kontrol ünitesi (ECU) ve şanzıman kontrol ünitesi (TCU) üzerinde yaptığımız lisanslı kalibrasyonlar ile sürüş dinamiklerini baştan yaratıyoruz.
                 </p>
-
                 <ul class="space-y-3 text-sm text-slate-300">
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-indigo-400"></i> 
-                        <span><strong>Stage 1 Yazılım:</strong> %20 - %35 Güç (HP) ve Tork (Nm) Artışı</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-indigo-400"></i> 
-                        <span><strong>Eco-Tuning:</strong> Ağır vasıta ve binek araçlarda %10'a varan yakıt tasarrufu</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-indigo-400"></i> 
-                        <span><strong>TCU Şanzıman Yazılımı:</strong> Daha hızlı vites geçişleri ve optimize edilmiş tork limitleri</span>
-                    </li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-indigo-400"></i> <span><strong>Stage 1 Yazılım:</strong> %20 - %35 Güç (HP) ve Tork (Nm) Artışı</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-indigo-400"></i> <span><strong>Eco-Tuning:</strong> Ağır vasıta ve binek araçlarda %10'a varan yakıt tasarrufu</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-indigo-400"></i> <span><strong>TCU Şanzıman Yazılımı:</strong> Daha hızlı vites geçişleri ve optimize edilmiş tork limitleri</span></li>
                 </ul>
             </div>
 
-            <!-- Sağ Sütun: Emisyon & Eko Çözümler -->
+            <!-- Sağ Sütun -->
             <div class="bg-gradient-to-b from-slate-900/80 to-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-rose-500/30 transition duration-300">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 text-xl">
@@ -227,24 +226,13 @@
                         <p class="text-xs text-slate-500">Egzoz ve Emisyon Sistemleri</p>
                     </div>
                 </div>
-
                 <p class="text-slate-400 text-sm leading-relaxed mb-6">
                     Yüksek maliyetli parça değişimlerine gerek kalmadan, aracınızın emisyon sistemlerindeki kronik ve sürüşü engelleyen yazılımsal hataları kalıcı olarak çözüyoruz.
                 </p>
-
                 <ul class="space-y-3 text-sm text-slate-300">
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-rose-400"></i> 
-                        <span><strong>AdBlue Çözümleri:</strong> Masraflı AdBlue pompa ve depo arızalarının yazılımsal iptali</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-rose-400"></i> 
-                        <span><strong>DPF İptali / Çözümü:</strong> Tıkanan Dizel Partikül Filtresi kaynaklı güç düşüşlerinin giderilmesi</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-angle-right text-rose-400"></i> 
-                        <span><strong>EGR Valfi Çözümleri:</strong> Kurumlanma yapan EGR sisteminin yazılımla devre dışı bırakılması</span>
-                    </li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-rose-400"></i> <span><strong>AdBlue Çözümleri:</strong> Masraflı AdBlue pompa ve depo arızalarının yazılımsal iptali</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-rose-400"></i> <span><strong>DPF İptali / Çözümü:</strong> Tıkanan Dizel Partikül Filtresi kaynaklı güç düşüşlerinin giderilmesi</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-angle-right text-rose-400"></i> <span><strong>EGR Valfi Çözümleri:</strong> Kurumlanma yapan EGR sisteminin yazılımla devre dışı bırakılması</span></li>
                 </ul>
             </div>
         </div>
@@ -259,7 +247,7 @@
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
                     Portföyünüzdeki ithal veya eksik özellikli araçların piyasa değerini ve satış hızını artırın. Toplu işlemler, dil dönüşümleri ve gizli özellik aktivasyonları için yerinde servis ve avantajlı kurumsal fiyatlandırma modellerimizden yararlanın.
                 </p>
-                <a href="https://wa.me/905428751210" target="_blank" class="bg-white hover:bg-slate-100 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg inline-flex items-center gap-2 transition">
+                <a href="https://wa.me/905428751210" target="_blank" class="bg-white hover:bg-slate-100 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg inline-flex items-center gap-2 transition transform hover:-translate-y-0.5">
                     <i class="fas fa-briefcase"></i> Kurumsal İş Birliği Teklifi Al
                 </a>
             </div>
@@ -273,9 +261,9 @@
                 <span class="text-xl font-black text-white">🤖 OTOBOTX</span>
                 <p class="text-xs text-slate-500 mt-1">© 2026 OtoBotX. Tüm Hakları Saklıdır.</p>
             </div>
-            <div class="flex gap-6 text-sm text-slate-400">
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
                 <span class="flex items-center gap-2"><i class="fas fa-location-dot text-cyan-400"></i> İstanbul, Türkiye</span>
-                <a href="https://wa.me/905428751210" class="hover:text-white transition flex items-center gap-2"><i class="fab fa-whatsapp text-emerald-400"></i> Bize Ulaşın</a>
+                <a href="https://wa.me/905428751210" target="_blank" class="hover:text-white transition flex items-center gap-2"><i class="fab fa-whatsapp text-emerald-400"></i> Bize Ulaşın</a>
             </div>
         </div>
     </footer>
