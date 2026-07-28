@@ -23,23 +23,26 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
 
-    <!-- 🗂️ NAV BAR (MENÜ) -->
+<!-- 🗂️ NAV BAR (MENÜ) -->
     <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <!-- Menü çubuğu yüksekliği logonun rahat sığması için h-24 yapıldı -->
+            <div class="flex items-center justify-between h-24">
+                <!-- Sol Alan: Sadece Logo (Büyük, Net ve Tam Ortalanmış) -->
                 <div class="flex items-center">
-                    <span class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                        🤖 OTOBOTX
-                    </span>
+                    <!-- Yükseklik h-16 yapılarak logo maksimum belirginliğe getirildi -->
+                    <img src="otobotxlogo.png" alt="OtoBotX Logo" class="h-16 w-auto object-contain">
                 </div>
+                <!-- Orta Alan: Menü Linkleri -->
                 <div class="hidden md:block space-x-8 text-sm font-medium text-slate-300">
                     <a href="#hizmetler" class="hover:text-cyan-400 transition">Hizmetlerimiz</a>
                     <a href="#multimedya" class="hover:text-cyan-400 transition">Multimedya Dönüşüm</a>
                     <a href="#chiptuning" class="hover:text-cyan-400 transition">Chip Tuning</a>
                     <a href="#kurumsal" class="hover:text-cyan-400 transition">Galeri İş Birliği</a>
                 </div>
+                <!-- Sağ Alan: WhatsApp Butonu -->
                 <div>
-                    <a href="https://wa.me/905428751210" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm shadow-lg shadow-emerald-500/20 transition duration-300 transform hover:-translate-y-0.5">
+                    <a href="https://wa.me/905428751210" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm shadow-lg shadow-emerald-500/20 transition duration-300 transform hover:-translate-y-0.5 whitespace-nowrap">
                         <i class="fab fa-whatsapp text-lg"></i> WhatsApp Fiyat Al
                     </a>
                 </div>
